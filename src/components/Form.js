@@ -20,18 +20,33 @@ const Form = () => {
     <div>
       <h3>Form</h3>
       <form onSubmit={handleSubmit}>
-        <TextInput inputName={'age'} onInput={inputHandler} />
-        <TextInput inputName={'firstName'} onInput={inputHandler} />
-        <TextInput inputName={'lastName'} onInput={inputHandler} />
+        <TextInput inputName={'age'} onInput={inputHandler} initialValue={''} />
+        <TextInput
+          inputName={'firstName'}
+          onInput={inputHandler}
+          initialValue={''}
+        />
+        <TextInput
+          inputName={'lastName'}
+          onInput={inputHandler}
+          initialValue={''}
+        />
         <CheckBoxList
           listName={'mediaTypes'}
-          items={['film', 'sound recording', 'computer file']}
+          items={[
+            { name: 'film', checked: false },
+            { name: 'sound recording', checked: false },
+            { name: 'computer file', checked: false },
+          ]}
           onInput={inputHandler}
         />
 
         <CheckBoxList
           listName={'lights'}
-          items={['office lamp', 'kitchen lights']}
+          items={[
+            { name: 'office lamp', checked: false },
+            { name: 'kitchen lights', checked: false },
+          ]}
           onInput={inputHandler}
         />
         <button>Submit</button>
