@@ -1,22 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import CheckBox from './CheckBox';
 
 const CheckBoxList = ({ listName, items, onInput }) => {
   const [checkBoxes, setCheckBoxes] = useState([]);
 
-  const checkChange = (event) => {
-    const isChecked = event.target.checked;
-
-    if (isChecked === true) {
+  const checkChange = useCallback((box) => {
+    if (box.checked === true) {
       setCheckBoxes((prevState) => {
-        return [...prevState, event.target.value];
+        return [...prevState, box.name];
       });
     } else {
       setCheckBoxes((prevState) => {
-        return prevState.filter((item) => item !== event.target.value);
+        return prevState.filter((item) => item !== box.name);
       });
     }
-  };
+  }, []);
 
   useEffect(() => {
     onInput(listName, checkBoxes);

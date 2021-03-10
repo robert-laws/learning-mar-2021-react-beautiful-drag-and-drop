@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useInput } from '../hooks/useInput';
 
-const TextInput = ({ inputName, onInput }) => {
+const TextInput = ({ inputName, onInput, initialValue }) => {
   const [value, onChange] = useInput();
 
   useEffect(() => {

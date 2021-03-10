@@ -28,6 +28,12 @@ const Form = () => {
           items={['film', 'sound recording', 'computer file']}
           onInput={inputHandler}
         />
+
+        <CheckBoxList
+          listName={'lights'}
+          items={['office lamp', 'kitchen lights']}
+          onInput={inputHandler}
+        />
         <button>Submit</button>
       </form>
     </div>
