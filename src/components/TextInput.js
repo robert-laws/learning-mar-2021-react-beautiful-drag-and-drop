@@ -10,7 +10,7 @@ const TextInput = ({ inputName, onInput, initialValue }) => {
 
   return (
     <div className='form-element'>
-      <label htmlFor={inputName}>{inputName}:</label>
+      <label htmlFor={inputName}>{inputName.split('_').join(' ')}:</label>
       <input
         type='text'
         name={inputName}

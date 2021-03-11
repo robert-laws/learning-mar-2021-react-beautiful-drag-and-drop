@@ -1,7 +1,13 @@
 import React, { useEffect } from 'react';
 import { useStaticInput } from '../hooks/useStaticInput';
 
-const StaticTextInput = ({ inputName, onInput, initialValue, updateValue }) => {
+const StaticTextInput = ({
+  inputName,
+  onInput,
+  initialValue,
+  updateValue,
+  visible = true,
+}) => {
   const [value, onUpdate] = useStaticInput(initialValue);
 
   useEffect(() => {
@@ -13,7 +19,7 @@ const StaticTextInput = ({ inputName, onInput, initialValue, updateValue }) => {
   }, [updateValue, onUpdate]);
 
   return (
-    <div className='form-element'>
+    <div className={`form-element ${visible ? 'show' : 'hide'}`}>
       <label htmlFor={inputName}>{inputName}:</label>
       <input
         type='text'

@@ -23,13 +23,14 @@ const CheckBoxList = ({ listName, items, onInput }) => {
   return (
     <div>
       {items.map((item) => (
-        <CheckBox
-          key={item.name}
-          listName={listName}
-          itemName={item.name}
-          checked={item.checked}
-          checkChange={checkChange}
-        />
+        <div key={item.name}>
+          <CheckBox
+            listName={listName}
+            itemName={item.name}
+            checked={item.checked}
+            checkChange={checkChange}
+          />
+        </div>
       ))}
     </div>
   );
