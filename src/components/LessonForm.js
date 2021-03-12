@@ -57,43 +57,38 @@ const LessonForm = () => {
                 onInput={inputHandler}
                 initialValue={''}
                 updateValue={course.title.rendered}
-                visible={false}
+                visible={true}
               />
               <StaticTextInput
                 inputName={'course_name'}
                 onInput={inputHandler}
                 initialValue={''}
                 updateValue={course.acf.course_name}
-                visible={false}
+                visible={true}
               />
               <StaticTextInput
                 inputName={'faculty'}
                 onInput={inputHandler}
                 initialValue={''}
                 updateValue={course.acf.faculty}
-                visible={false}
+                visible={true}
               />
               <StaticTextInput
                 inputName={'semester'}
                 onInput={inputHandler}
                 initialValue={''}
                 updateValue={course.acf.semester}
-                visible={false}
+                visible={true}
               />
               <StaticTextInput
                 inputName={'year'}
                 onInput={inputHandler}
                 initialValue={''}
                 updateValue={course.acf.year}
-                visible={false}
+                visible={true}
               />
             </>
           )}
-          <div>Course Code: {course && course.title.rendered}</div>
-          <div>Course Name: {course && course.acf.course_name}</div>
-          <div>Faculty: {course && course.acf.faculty}</div>
-          <div>Semester: {course && course.acf.semester}</div>
-          <div>Year: {course && course.acf.year}</div>
           <TextInput
             inputName={'class_assignment'}
             onInput={inputHandler}
@@ -103,17 +98,25 @@ const LessonForm = () => {
           <CheckBoxList
             listName={'information_literacy_objectives'}
             items={[
-              { name: 'Avoiding Plagiarism', checked: false },
-              { name: 'Gathering Data/Statistics', checked: false },
-              { name: 'Citing', checked: false },
-              { name: 'Primary Sources', checked: false },
-              { name: 'Evaluating Sources', checked: false },
-              { name: 'Scholarly vs Non-scholarly Sources', checked: false },
-              { name: 'Literature Review', checked: false },
-              { name: 'Search Strategy/Skills', checked: false },
-              { name: 'Finding Journal Articles', checked: false },
-              { name: 'Software instruction', checked: false },
-              { name: 'Finding/Using Multimedia Sources', checked: false },
+              { name: 'Avoiding Plagiarism', id: 7, checked: false },
+              { name: 'Gathering Data/Statistics', id: 8, checked: false },
+              { name: 'Citing', id: 9, checked: false },
+              { name: 'Primary Sources', id: 10, checked: false },
+              { name: 'Evaluating Sources', id: 11, checked: false },
+              {
+                name: 'Scholarly vs Non-scholarly Sources',
+                id: 12,
+                checked: false,
+              },
+              { name: 'Literature Review', id: 13, checked: false },
+              { name: 'Search Strategy/Skills', id: 14, checked: false },
+              { name: 'Finding Journal Articles', id: 15, checked: false },
+              { name: 'Software instruction', id: 16, checked: false },
+              {
+                name: 'Finding/Using Multimedia Sources',
+                id: 17,
+                checked: false,
+              },
             ]}
             onInput={inputHandler}
           />
@@ -123,13 +126,22 @@ const LessonForm = () => {
             items={[
               {
                 name: 'Authority Is Constructed and Contextual',
+                id: 18,
                 checked: false,
               },
-              { name: 'Research As Inquiry', checked: false },
-              { name: 'Information Creation as a Process', checked: false },
-              { name: 'Scholarship as Conversation', checked: false },
-              { name: 'Information Has Value', checked: false },
-              { name: 'Search as Strategic Exploration', checked: false },
+              { name: 'Research As Inquiry', id: 19, checked: false },
+              {
+                name: 'Information Creation as a Process',
+                id: 20,
+                checked: false,
+              },
+              { name: 'Scholarship as Conversation', id: 21, checked: false },
+              { name: 'Information Has Value', id: 22, checked: false },
+              {
+                name: 'Search as Strategic Exploration',
+                id: 23,
+                checked: false,
+              },
             ]}
             onInput={inputHandler}
           />
@@ -137,21 +149,25 @@ const LessonForm = () => {
           <CheckBoxList
             listName={'modules'}
             items={[
-              { name: 'Advanced HoyaSearch', checked: false },
-              { name: 'Background Knowledge', checked: false },
-              { name: 'Basic HoyaSearch', checked: false },
-              { name: 'Citing Properly', checked: false },
-              { name: 'Data and Dataset searching', checked: false },
-              { name: 'Develop a Topic', checked: false },
-              { name: 'Evaluate Information Sources', checked: false },
-              { name: 'Expert Google Scholar', checked: false },
-              { name: 'Get to Know the Library', checked: false },
-              { name: 'Literature Review', checked: false },
-              { name: 'Multimedia and Copyright Guidelines', checked: false },
-              { name: 'Primary Sources', checked: false },
-              { name: 'RefWorks/Zotero', checked: false },
-              { name: 'Searching for News', checked: false },
-              { name: 'Subject Database Search', checked: false },
+              { name: 'Advanced HoyaSearch', id: 24, checked: false },
+              { name: 'Background Knowledge', id: 25, checked: false },
+              { name: 'Basic HoyaSearch', id: 26, checked: false },
+              { name: 'Citing Properly', id: 27, checked: false },
+              { name: 'Data and Dataset searching', id: 28, checked: false },
+              { name: 'Develop a Topic', id: 29, checked: false },
+              { name: 'Evaluate Information Sources', id: 30, checked: false },
+              { name: 'Expert Google Scholar', id: 31, checked: false },
+              { name: 'Get to Know the Library', id: 32, checked: false },
+              { name: 'Literature Review', id: 33, checked: false },
+              {
+                name: 'Multimedia and Copyright Guidelines',
+                id: 34,
+                checked: false,
+              },
+              { name: 'Primary Sources', id: 35, checked: false },
+              { name: 'RefWorks/Zotero', id: 36, checked: false },
+              { name: 'Searching for News', id: 37, checked: false },
+              { name: 'Subject Database Search', id: 38, checked: false },
             ]}
             onInput={inputHandler}
           />

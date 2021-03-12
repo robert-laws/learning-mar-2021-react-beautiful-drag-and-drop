@@ -7,11 +7,11 @@ const CheckBoxList = ({ listName, items, onInput }) => {
   const checkChange = useCallback((box) => {
     if (box.checked === true) {
       setCheckBoxes((prevState) => {
-        return [...prevState, box.name];
+        return [...prevState, box.number];
       });
     } else {
       setCheckBoxes((prevState) => {
-        return prevState.filter((item) => item !== box.name);
+        return prevState.filter((item) => item !== box.number);
       });
     }
   }, []);
@@ -23,8 +23,9 @@ const CheckBoxList = ({ listName, items, onInput }) => {
   return (
     <div>
       {items.map((item) => (
-        <div key={item.name}>
+        <div key={item.id}>
           <CheckBox
+            id_number={item.id}
             listName={listName}
             itemName={item.name}
             checked={item.checked}

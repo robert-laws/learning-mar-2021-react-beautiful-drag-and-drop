@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useCheckBoxInput } from '../hooks/useCheckBoxInput';
 
-const CheckBox = ({ listName, itemName, checked, checkChange }) => {
+const CheckBox = ({ id_number, listName, itemName, checked, checkChange }) => {
   const [value, onChange] = useCheckBoxInput({
     name: itemName,
+    number: id_number,
     checked: checked,
   });
 
@@ -18,7 +19,7 @@ const CheckBox = ({ listName, itemName, checked, checkChange }) => {
         type='checkbox'
         id={itemName}
         name={listName}
-        value={value}
+        value={value.id_number}
         checked={value.checked}
         onChange={onChange}
       />
