@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import CheckBox from './CheckBox';
 
-const CheckBoxList = ({ listName, items, onInput }) => {
+const CheckBoxList = ({ listName, items, onInput, checkedList }) => {
   const [checkBoxes, setCheckBoxes] = useState([]);
 
   const checkChange = useCallback((box) => {
@@ -28,7 +28,7 @@ const CheckBoxList = ({ listName, items, onInput }) => {
             id_number={item.id}
             listName={listName}
             itemName={item.name}
-            checked={item.checked}
+            checked={checkedList.includes(parseInt(item.id)) ? true : false}
             checkChange={checkChange}
           />
         </div>

@@ -10,10 +10,10 @@ import optionsReducer from './optionsReducer';
 
 const OptionsState = ({ children }) => {
   const initialState = {
-    informationLiteracyObjectives: {},
-    thresholdConcepts: {},
-    modules: {},
-    librarians: {},
+    informationLiteracyObjectives: null,
+    thresholdConcepts: null,
+    modules: null,
+    librarians: null,
   };
 
   const [state, dispatch] = useReducer(optionsReducer, initialState);
