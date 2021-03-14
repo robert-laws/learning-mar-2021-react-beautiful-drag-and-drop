@@ -14,11 +14,11 @@ const CheckBox = ({ id_number, listName, itemName, checked, checkChange }) => {
 
   return (
     <>
-      <label htmlFor={itemName}>{itemName}</label>{' '}
+      <label htmlFor={`${itemName}-${id_number}`}>{itemName}</label>{' '}
       <input
         type='checkbox'
-        id={itemName}
-        name={listName}
+        id={`${itemName}-${id_number}`}
+        name={`${itemName}-${id_number}`}
         value={value.id_number}
         checked={value.checked}
         onChange={onChange}

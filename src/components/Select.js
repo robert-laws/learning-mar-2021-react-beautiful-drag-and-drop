@@ -17,7 +17,7 @@ const Select = ({
     <div>
       <label>
         Courses:
-        <select value={value} onChange={onChange}>
+        <select name={name} value={value} onChange={onChange}>
           <option value=''>{initialText}</option>
           {optionList.map((item) => (
             <option

@@ -24,7 +24,10 @@ const LessonForm = () => {
 
   const [formValues, setFormValues] = useState({});
 
-  const [courseSelect, setCourseSelect] = useState('');
+  const [courseSelect, setCourseSelect] = useState({
+    name: '',
+    id: '',
+  });
 
   useEffect(() => {
     getCourses();
@@ -41,8 +44,8 @@ const LessonForm = () => {
   ]);
 
   useEffect(() => {
-    if (courseSelect !== '') {
-      getCourse(courseSelect);
+    if (courseSelect.id !== '') {
+      getCourse(courseSelect.id);
     }
   }, [getCourse, courseSelect]);
 
@@ -57,9 +60,12 @@ const LessonForm = () => {
     });
   }, []);
 
-  const onSelect = (name, id) => {
-    setCourseSelect(id);
-  };
+  const onSelect = useCallback(
+    (name, id) => {
+      setCourseSelect({ name, id });
+    },
+    [setCourseSelect]
+  );
 
   return (
     <div>
