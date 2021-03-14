@@ -57,7 +57,7 @@ const LessonForm = () => {
     });
   }, []);
 
-  const onSelect = (id) => {
+  const onSelect = (name, id) => {
     setCourseSelect(id);
   };
 
@@ -70,8 +70,9 @@ const LessonForm = () => {
         <form onSubmit={handleSubmit}>
           <Select
             optionList={courses}
-            selectedItem={courseSelect}
             onSelect={onSelect}
+            name='courses'
+            initialText={'Select a Course'}
           />
           {course && (
             <>
@@ -111,6 +112,14 @@ const LessonForm = () => {
                 visible={true}
               />
             </>
+          )}
+          {librarians && (
+            <Select
+              optionList={librarians}
+              onSelect={inputHandler}
+              name='librarian'
+              initialText={'Select a Librarian'}
+            />
           )}
           <TextInput
             inputName={'class_assignment'}
