@@ -5,18 +5,8 @@ import coursesReducer from './coursesReducer';
 
 const CoursesState = ({ children }) => {
   const initialState = {
-    course: {
-      title: {
-        rendered: '',
-      },
-      acf: {
-        course_name: '',
-        faculty: '',
-        semester: '',
-        year: '',
-      },
-    },
-    courses: null,
+    course: {},
+    courses: {},
     isLoading: true,
   };
 

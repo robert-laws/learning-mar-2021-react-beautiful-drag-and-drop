@@ -56,35 +56,35 @@ const LessonForm = () => {
                 inputName={'course_code'}
                 onInput={inputHandler}
                 initialValue={''}
-                updateValue={course.title.rendered}
+                updateValue={course.title?.rendered || ''}
                 visible={true}
               />
               <StaticTextInput
                 inputName={'course_name'}
                 onInput={inputHandler}
                 initialValue={''}
-                updateValue={course.acf.course_name}
+                updateValue={course.acf?.course_name || ''}
                 visible={true}
               />
               <StaticTextInput
                 inputName={'faculty'}
                 onInput={inputHandler}
                 initialValue={''}
-                updateValue={course.acf.faculty}
+                updateValue={course.acf?.faculty || ''}
                 visible={true}
               />
               <StaticTextInput
                 inputName={'semester'}
                 onInput={inputHandler}
                 initialValue={''}
-                updateValue={course.acf.semester}
+                updateValue={course.acf?.semester || ''}
                 visible={true}
               />
               <StaticTextInput
                 inputName={'year'}
                 onInput={inputHandler}
                 initialValue={''}
-                updateValue={course.acf.year}
+                updateValue={course.acf?.year || ''}
                 visible={true}
               />
             </>
