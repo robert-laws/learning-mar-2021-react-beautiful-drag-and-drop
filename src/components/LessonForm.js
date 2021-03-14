@@ -4,10 +4,23 @@ import TextInput from './TextInput';
 import StaticTextInput from './StaticTextInput';
 import CheckBoxList from './CheckBoxList';
 import CoursesContext from '../context/courses/coursesContext';
+import OptionsContext from '../context/options/optionsContext';
 
 const LessonForm = () => {
   const coursesContext = useContext(CoursesContext);
   const { getCourses, getCourse, courses, course, isLoading } = coursesContext;
+
+  const optionsContext = useContext(OptionsContext);
+  const {
+    informationLiteracyObjectives,
+    thresholdConcepts,
+    modules,
+    librarians,
+    getInformationLiteracyObjectives,
+    getThresholdConcepts,
+    getModules,
+    getLibrarians,
+  } = optionsContext;
 
   const [formValues, setFormValues] = useState({});
 
@@ -15,7 +28,17 @@ const LessonForm = () => {
 
   useEffect(() => {
     getCourses();
-  }, [getCourses]);
+    getInformationLiteracyObjectives();
+    getThresholdConcepts();
+    getModules();
+    getLibrarians();
+  }, [
+    getCourses,
+    getInformationLiteracyObjectives,
+    getThresholdConcepts,
+    getModules,
+    getLibrarians,
+  ]);
 
   useEffect(() => {
     if (courseSelect !== '') {
