@@ -3,8 +3,10 @@ import Select from './Select';
 import TextInput from './TextInput';
 import StaticTextInput from './StaticTextInput';
 import CheckBoxList from './CheckBoxList';
+import RadioButtonList from './RadioButtonList';
 import CoursesContext from '../context/courses/coursesContext';
 import OptionsContext from '../context/options/optionsContext';
+import { setIntervals } from '../utils/formUtils';
 
 const LessonForm = () => {
   const coursesContext = useContext(CoursesContext);
@@ -29,10 +31,7 @@ const LessonForm = () => {
     id: '',
   });
 
-  const [durations, setDurations] = useState([
-    { id: '5 minutes', title: '5 minutes' },
-    { id: '10 minutes', title: '10 minutes' },
-  ]);
+  const [durations, setDurations] = useState(null);
 
   useEffect(() => {
     getCourses();
@@ -53,6 +52,11 @@ const LessonForm = () => {
       getCourse(courseSelect.id);
     }
   }, [getCourse, courseSelect]);
+
+  useEffect(() => {
+    const myDurations = setIntervals(5, 75, 5);
+    setDurations(myDurations);
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -136,11 +140,11 @@ const LessonForm = () => {
           {/* Number of Learners */}
 
           {librarians && (
-            <Select
-              optionList={librarians}
-              onSelect={inputHandler}
-              name='librarian'
-              initialText={'Select a Librarian'}
+            <RadioButtonList
+              listName='librarians'
+              items={librarians}
+              onInput={inputHandler}
+              checkedList={[]}
             />
           )}
           <TextInput

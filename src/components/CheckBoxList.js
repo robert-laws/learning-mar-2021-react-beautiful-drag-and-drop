@@ -26,7 +26,6 @@ const CheckBoxList = ({ listName, items, onInput, checkedList }) => {
         <div key={item.id}>
           <CheckBox
             id_number={item.id}
-            listName={listName}
             itemName={item.name}
             checked={checkedList.includes(parseInt(item.id)) ? true : false}
             checkChange={checkChange}

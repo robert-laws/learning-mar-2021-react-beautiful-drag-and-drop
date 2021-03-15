@@ -16,7 +16,7 @@ const Select = ({
   return (
     <div>
       <label>
-        Courses:
+        {name}:
         <select name={name} value={value} onChange={onChange}>
           <option value=''>{initialText}</option>
           {optionList.map((item) => (

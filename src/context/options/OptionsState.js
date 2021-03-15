@@ -67,7 +67,7 @@ const OptionsState = ({ children }) => {
   }, [dispatch]);
 
   const getLibrarians = useCallback(async () => {
-    let restURL = `${restRoot}/wp/v2/librarians?_fields=id,title`;
+    let restURL = `${restRoot}/wp/v2/librarians?_fields=id,name`;
 
     try {
       const response = await fetch(restURL);
