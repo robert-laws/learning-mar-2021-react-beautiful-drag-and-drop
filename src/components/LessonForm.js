@@ -29,6 +29,11 @@ const LessonForm = () => {
     id: '',
   });
 
+  const [durations, setDurations] = useState([
+    { id: '5 minutes', title: '5 minutes' },
+    { id: '10 minutes', title: '10 minutes' },
+  ]);
+
   useEffect(() => {
     getCourses();
     getInformationLiteracyObjectives();
@@ -80,45 +85,56 @@ const LessonForm = () => {
             name='courses'
             initialText={'Select a Course'}
           />
-          {course && (
-            <>
-              <StaticTextInput
-                inputName={'course_code'}
-                onInput={inputHandler}
-                initialValue={''}
-                updateValue={course.title?.rendered || ''}
-                visible={true}
-              />
-              <StaticTextInput
-                inputName={'course_name'}
-                onInput={inputHandler}
-                initialValue={''}
-                updateValue={course.acf?.course_name || ''}
-                visible={true}
-              />
-              <StaticTextInput
-                inputName={'faculty'}
-                onInput={inputHandler}
-                initialValue={''}
-                updateValue={course.acf?.faculty || ''}
-                visible={true}
-              />
-              <StaticTextInput
-                inputName={'semester'}
-                onInput={inputHandler}
-                initialValue={''}
-                updateValue={course.acf?.semester || ''}
-                visible={true}
-              />
-              <StaticTextInput
-                inputName={'year'}
-                onInput={inputHandler}
-                initialValue={''}
-                updateValue={course.acf?.year || ''}
-                visible={true}
-              />
-            </>
+          <StaticTextInput
+            inputName={'course_code'}
+            onInput={inputHandler}
+            initialValue={''}
+            updateValue={course.title?.rendered || ''}
+            visible={true}
+          />
+          <StaticTextInput
+            inputName={'course_name'}
+            onInput={inputHandler}
+            initialValue={''}
+            updateValue={course.acf?.course_name || ''}
+            visible={true}
+          />
+          <StaticTextInput
+            inputName={'faculty'}
+            onInput={inputHandler}
+            initialValue={''}
+            updateValue={course.acf?.faculty || ''}
+            visible={true}
+          />
+          <StaticTextInput
+            inputName={'semester'}
+            onInput={inputHandler}
+            initialValue={''}
+            updateValue={course.acf?.semester || ''}
+            visible={true}
+          />
+          <StaticTextInput
+            inputName={'year'}
+            onInput={inputHandler}
+            initialValue={''}
+            updateValue={course.acf?.year || ''}
+            visible={true}
+          />
+
+          {/* Class Date */}
+
+          {/* Class Duration */}
+          {durations && (
+            <Select
+              optionList={durations}
+              onSelect={inputHandler}
+              name='duration'
+              initialText={'Select a session length'}
+            />
           )}
+
+          {/* Number of Learners */}
+
           {librarians && (
             <Select
               optionList={librarians}
