@@ -9,6 +9,7 @@ import CoursesContext from '../context/courses/coursesContext';
 import OptionsContext from '../context/options/optionsContext';
 import { setIntervals } from '../utils/formUtils';
 import NumberPicker from './NumberPicker';
+import TextInputCollection from './TextInputCollection';
 
 const LessonForm = () => {
   const coursesContext = useContext(CoursesContext);
@@ -187,6 +188,16 @@ const LessonForm = () => {
               checkedList={[]}
             />
           )}
+          <hr />
+
+          {/* Learning Outcomes */}
+
+          <TextInputCollection
+            listName='learning_outcomes'
+            onInput={inputHandler}
+          />
+
+          <hr />
           <button>Submit</button>
         </form>
       )}

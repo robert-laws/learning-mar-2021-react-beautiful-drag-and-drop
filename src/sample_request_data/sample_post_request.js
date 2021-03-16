@@ -26,19 +26,6 @@ const postmanGetObject = {
   },
 };
 
-const postmanPostObj = {
-  information_literacy_objectives: [10, 11, 17],
-  threshold_concepts: [18, 19],
-  modules: [28, 29, 30, 32, 38],
-  title: 'HIST-123-70 - Proseminar - Spring 2021 - Oidtmann',
-  fields: {
-    semester: 'summer',
-    session_date: '03/11/2021',
-    duration_of_session: '45',
-    number_of_learners: '12',
-  },
-};
-
 const reactObj = {
   course_code: 'ECON-002-72',
   course_name: 'Econ Principles Macro',
@@ -51,4 +38,20 @@ const reactObj = {
   information_literacy_objectives: [11, 8, 12, 14],
   threshold_concepts: [22, 21, 23],
   modules: [26, 29, 32, 33, 34],
+};
+
+const postmanPostObj = {
+  information_literacy_objectives: [10, 11, 17],
+  threshold_concepts: [18, 19],
+  modules: [28, 29, 30, 32, 38],
+  librarians: [39],
+  title: 'HIST-123-70 - Proseminar - Spring 2021 - Oidtmann',
+  fields: {
+    semester: 'summer',
+    session_date: '2021-03-04',
+    duration_of_session: '45',
+    number_of_learners: '15',
+    learning_outcomes:
+      '<ul><li>Find resources</li><li>Checkout books</li><li>Write paper</li></ul>',
+  },
 };
