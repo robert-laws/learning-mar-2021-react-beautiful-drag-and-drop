@@ -31,16 +31,38 @@ const TextInputCollection = ({ listName, onInput }) => {
   const [formFields, setFormFields] = useState([]);
   const [inputNumber, setInputNumber] = useState(0);
 
+  const removeTextInput = useCallback((thisOutcome) => {
+    setFormValues((prevState) => {
+      return Object.fromEntries(
+        Object.entries(prevState).filter(([key, value]) => key !== thisOutcome)
+      );
+    });
+
+    hideInput(thisOutcome);
+  }, []);
+
+  const hideInput = (divId) => {
+    document.querySelector(`#${divId}`).classList.add('hide');
+  };
+
   useEffect(() => {
     setFormFields((prevState) => [
       ...prevState,
-      <TextInput
-        inputName={`outcome-${inputNumber}`}
-        initialValue=''
-        onInput={inputHandler}
-      />,
+      <div id={`outcome-${inputNumber}`}>
+        <TextInput
+          inputName={`outcome-${inputNumber}`}
+          initialValue=''
+          onInput={inputHandler}
+        />
+        <button
+          type='button'
+          onClick={() => removeTextInput(`outcome-${inputNumber}`)}
+        >
+          Remove
+        </button>
+      </div>,
     ]);
-  }, [inputNumber, inputHandler]);
+  }, [inputNumber, inputHandler, removeTextInput]);
 
   return (
     <>
@@ -48,7 +70,9 @@ const TextInputCollection = ({ listName, onInput }) => {
         <div key={index}>{field}</div>
       ))}
 
-      <button onClick={handleNewOutcome}>Add New Outcome</button>
+      <button type='button' onClick={handleNewOutcome}>
+        Add New Outcome
+      </button>
     </>
   );
 };
