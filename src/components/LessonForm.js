@@ -1,12 +1,14 @@
 import React, { useState, useCallback, useContext, useEffect } from 'react';
 import Select from './Select';
 import TextInput from './TextInput';
+import DatePicker from './DatePicker';
 import StaticTextInput from './StaticTextInput';
 import CheckBoxList from './CheckBoxList';
 import RadioButtonList from './RadioButtonList';
 import CoursesContext from '../context/courses/coursesContext';
 import OptionsContext from '../context/options/optionsContext';
 import { setIntervals } from '../utils/formUtils';
+import NumberPicker from './NumberPicker';
 
 const LessonForm = () => {
   const coursesContext = useContext(CoursesContext);
@@ -126,6 +128,7 @@ const LessonForm = () => {
           />
 
           {/* Class Date */}
+          <DatePicker inputName='session_date' onInput={inputHandler} />
 
           {/* Class Duration */}
           {durations && (
@@ -138,6 +141,11 @@ const LessonForm = () => {
           )}
 
           {/* Number of Learners */}
+          <NumberPicker
+            inputName='number_of_learners'
+            onInput={inputHandler}
+            initialValue={''}
+          />
 
           {librarians && (
             <RadioButtonList
