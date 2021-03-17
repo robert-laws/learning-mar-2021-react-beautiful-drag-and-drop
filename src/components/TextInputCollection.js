@@ -14,7 +14,7 @@ const TextInputCollection = ({ listName, onInput }) => {
   useEffect(() => {
     let htmlOutput = '<ul>';
     for (const [key, value] of Object.entries(formValues)) {
-      htmlOutput += `<li id='${key}'>${value}</ul>`;
+      htmlOutput += `<li id='${key}'>${value}</li>`;
     }
     htmlOutput += '</ul>';
     setFinalHtml(htmlOutput);

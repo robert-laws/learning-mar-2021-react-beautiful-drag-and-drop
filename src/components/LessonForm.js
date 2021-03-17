@@ -7,6 +7,7 @@ import CheckBoxList from './CheckBoxList';
 import RadioButtonList from './RadioButtonList';
 import CoursesContext from '../context/courses/coursesContext';
 import OptionsContext from '../context/options/optionsContext';
+import LessonsContext from '../context/lessons/lessonsContext';
 import NumberPicker from './NumberPicker';
 import TextInputCollection from './TextInputCollection';
 import { setIntervals } from '../utils/formUtils';
@@ -14,6 +15,9 @@ import { setIntervals } from '../utils/formUtils';
 const LessonForm = () => {
   const coursesContext = useContext(CoursesContext);
   const { getCourses, getCourse, courses, course, isLoading } = coursesContext;
+
+  const lessonsContext = useContext(LessonsContext);
+  const { lesson, buildLesson } = lessonsContext;
 
   const optionsContext = useContext(OptionsContext);
   const {
@@ -27,7 +31,7 @@ const LessonForm = () => {
     getLibrarians,
   } = optionsContext;
 
-  const [formValues, setFormValues] = useState({});
+  // const [formValues, setFormValues] = useState({});
 
   const [courseSelect, setCourseSelect] = useState({
     name: '',
@@ -63,14 +67,19 @@ const LessonForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formValues);
+    console.log(lesson);
   };
 
-  const inputHandler = useCallback((inputName, value) => {
-    setFormValues((prevState) => {
-      return { ...prevState, [inputName]: value };
-    });
-  }, []);
+  const inputHandler = useCallback(
+    (inputName, value) => {
+      // setFormValues((prevState) => {
+      //   return { ...prevState, [inputName]: value };
+      // });
+
+      buildLesson(inputName, value);
+    },
+    [buildLesson]
+  );
 
   const onSelect = useCallback(
     (name, id) => {
