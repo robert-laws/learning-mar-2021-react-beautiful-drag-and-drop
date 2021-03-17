@@ -51,9 +51,6 @@ const DragAndDrop = () => {
       const checkedLength = formValues.modules.length;
       const modulesListLength = modulesList.length;
 
-      // console.log(checkedLength);
-      // console.log(modulesListLength);
-
       if (checkedLength > modulesListLength) {
         formValues.modules.forEach((item) => {
           if (modulesList.some((i) => i.id === item)) {
@@ -63,19 +60,26 @@ const DragAndDrop = () => {
           }
         });
       } else {
-        console.log('need to remove one');
-      }
-      // let myModules = formValues.modules.map((number) =>
-      //   modules.find((module) => module.id === number)
-      // );
-      // console.log(myModules);
+        const modulesIdList = modulesList.map((item) => item.id);
+        let removeItem = null;
+        modulesIdList.forEach((item) => {
+          if (formValues.modules.includes(item)) {
+            // do nothing, is in the form list
+          } else {
+            removeItem = item;
+          }
+        });
 
-      // let myModulesNames = myModules.map((module) => module);
-      // setModulesList(myModulesNames);
+        setModulesList((prevState) => [
+          ...prevState.filter((item) => item.id !== removeItem),
+        ]);
+      }
     } else {
-      setModulesList([]);
+      if (formValues.modules?.length === 0) {
+        setModulesList([]);
+      }
     }
-  }, [formValues, modules]);
+  }, [formValues.modules, modules]);
 
   const inputHandler = useCallback((inputName, value) => {
     setFormValues((prevState) => {
