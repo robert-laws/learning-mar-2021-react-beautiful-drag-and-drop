@@ -7,9 +7,9 @@ import CheckBoxList from './CheckBoxList';
 import RadioButtonList from './RadioButtonList';
 import CoursesContext from '../context/courses/coursesContext';
 import OptionsContext from '../context/options/optionsContext';
-import { setIntervals } from '../utils/formUtils';
 import NumberPicker from './NumberPicker';
 import TextInputCollection from './TextInputCollection';
+import { setIntervals } from '../utils/formUtils';
 
 const LessonForm = () => {
   const coursesContext = useContext(CoursesContext);
@@ -156,12 +156,15 @@ const LessonForm = () => {
               checkedList={[]}
             />
           )}
+
+          {/* Class Assignment */}
           <TextInput
             inputName={'class_assignment'}
             onInput={inputHandler}
             initialValue={''}
           />
           <hr />
+
           {informationLiteracyObjectives && (
             <CheckBoxList
               listName={'information_literacy_objectives'}
@@ -171,6 +174,7 @@ const LessonForm = () => {
             />
           )}
           <hr />
+
           {thresholdConcepts && (
             <CheckBoxList
               listName={'threshold_concepts'}
@@ -180,6 +184,7 @@ const LessonForm = () => {
             />
           )}
           <hr />
+
           {modules && (
             <CheckBoxList
               listName={'modules'}
@@ -191,14 +196,13 @@ const LessonForm = () => {
           <hr />
 
           {/* Learning Outcomes */}
-
           <TextInputCollection
             listName='learning_outcomes'
             onInput={inputHandler}
           />
 
           <hr />
-          <button>Submit</button>
+          <button type='submit'>Submit</button>
         </form>
       )}
     </div>
