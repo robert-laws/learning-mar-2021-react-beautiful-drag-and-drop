@@ -6,10 +6,12 @@ import OptionsContext from '../context/options/optionsContext';
 
 const DragAndDrop = () => {
   const optionsContext = useContext(OptionsContext);
-  const { modules, getModules } = optionsContext;
+  const { modules, getModules, addCustomModule } = optionsContext;
 
   const [formValues, setFormValues] = useState({});
   const [modulesList, setModulesList] = useState([]);
+  const [myCheckedList, setMyCheckedList] = useState([]);
+  const [customModule, setCustomModule] = useState('');
 
   const style = {
     width: 400,
@@ -87,15 +89,46 @@ const DragAndDrop = () => {
     });
   }, []);
 
+  const handleAddCustomModule = () => {
+    const number = modules.length;
+    const newModule = {
+      id: number + 1,
+      name: customModule,
+    };
+    addCustomModule(newModule);
+    setMyCheckedList((prevState) => [...prevState, newModule.id]);
+    setCustomModule('');
+  };
+
+  const handleCustomModuleChange = (event) => {
+    setCustomModule(event.target.value);
+  };
+
   return (
     <div>
       {modules && (
-        <CheckBoxList
-          listName={'modules'}
-          items={modules}
-          onInput={inputHandler}
-          checkedList={[]}
-        />
+        <>
+          <CheckBoxList
+            listName={'modules'}
+            items={modules}
+            onInput={inputHandler}
+            checkedList={myCheckedList}
+          />
+          <input
+            type='text'
+            value={customModule}
+            id='custom_module'
+            name='custom_module'
+            onChange={handleCustomModuleChange}
+          />
+          <button
+            type='button'
+            disabled={!customModule}
+            onClick={handleAddCustomModule}
+          >
+            Add Custom Module
+          </button>
+        </>
       )}
       <hr />
       {modulesList && modulesList.length > 0 && (

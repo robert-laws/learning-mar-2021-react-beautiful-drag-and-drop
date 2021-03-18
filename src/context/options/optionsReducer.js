@@ -3,6 +3,7 @@ import {
   GET_THRESHOLD_CONCEPTS,
   GET_MODULES,
   GET_LIBRARIANS,
+  ADD_CUSTOM_MODULES,
 } from '../types';
 
 const optionsReducer = (state, action) => {
@@ -25,6 +26,13 @@ const optionsReducer = (state, action) => {
       return {
         ...state,
         modules: action.payload,
+      };
+    }
+
+    case ADD_CUSTOM_MODULES: {
+      return {
+        ...state,
+        modules: [...state.modules, action.payload],
       };
     }
 

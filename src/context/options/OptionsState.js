@@ -4,6 +4,7 @@ import {
   GET_THRESHOLD_CONCEPTS,
   GET_MODULES,
   GET_LIBRARIANS,
+  ADD_CUSTOM_MODULES,
 } from '../types';
 import OptionsContext from './optionsContext';
 import optionsReducer from './optionsReducer';
@@ -66,6 +67,13 @@ const OptionsState = ({ children }) => {
     }
   }, [dispatch]);
 
+  const addCustomModule = useCallback(
+    (newModule) => {
+      dispatch({ type: ADD_CUSTOM_MODULES, payload: newModule });
+    },
+    [dispatch]
+  );
+
   const getLibrarians = useCallback(async () => {
     let restURL = `${restRoot}/wp/v2/librarians?_fields=id,name`;
 
@@ -92,6 +100,7 @@ const OptionsState = ({ children }) => {
         getThresholdConcepts,
         getModules,
         getLibrarians,
+        addCustomModule,
       }}
     >
       {children}
