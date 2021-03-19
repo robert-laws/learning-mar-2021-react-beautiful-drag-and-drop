@@ -127,6 +127,13 @@ const DragAndDrop = () => {
     });
   }, []);
 
+  const handleReview = () => {
+    for (const [key, value] of Object.entries(selectedModulesDetails)) {
+      const moduleMatch = modules.find((mod) => mod.id === parseInt(key));
+      console.log(`${moduleMatch.name}: ${value.time} ${value.text}`);
+    }
+  };
+
   return (
     <div>
       {modules && (
@@ -179,6 +186,9 @@ const DragAndDrop = () => {
           ))}
         </>
       )}
+      <button type='button' onClick={handleReview}>
+        Finished
+      </button>
     </div>
   );
 };
