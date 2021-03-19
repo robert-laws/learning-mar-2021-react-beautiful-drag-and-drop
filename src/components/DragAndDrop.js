@@ -14,7 +14,7 @@ const DragAndDrop = () => {
   const [modulesList, setModulesList] = useState([]);
   const [myCheckedList, setMyCheckedList] = useState([]);
   const [customModule, setCustomModule] = useState('');
-  const [selectedModulesDetails, setSelectedModulesDetails] = useState([]);
+  const [selectedModulesDetails, setSelectedModulesDetails] = useState({});
 
   const style = {
     width: 400,
@@ -88,6 +88,7 @@ const DragAndDrop = () => {
     } else {
       if (formValues.modules?.length === 0) {
         setModulesList([]);
+        setSelectedModulesDetails({});
       }
     }
   }, [formValues.modules, modules]);
@@ -128,10 +129,25 @@ const DragAndDrop = () => {
   }, []);
 
   const handleReview = () => {
-    for (const [key, value] of Object.entries(selectedModulesDetails)) {
-      const moduleMatch = modules.find((mod) => mod.id === parseInt(key));
-      console.log(`${moduleMatch.name}: ${value.time} ${value.text}`);
-    }
+    let modules_detail = '<ul>';
+
+    modules_detail += modulesList.map((module) => {
+      let modNumber = module.id;
+      let modName = module.name.replace(/\s+/g, '-').toLowerCase();
+
+      let singleModDetail = '';
+      Object.entries(selectedModulesDetails).map(([key, value]) => {
+        if (parseInt(key) === modNumber) {
+          singleModDetail += `<li id='mod-${modName}'><span>${value.time}</span><p>${value.text}</p></li>`;
+        }
+      });
+
+      return singleModDetail;
+    });
+
+    modules_detail += '</ul>';
+
+    console.log(modules_detail.replace(/,/g, ''));
   };
 
   return (
