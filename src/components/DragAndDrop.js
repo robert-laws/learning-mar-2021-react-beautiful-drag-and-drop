@@ -2,6 +2,8 @@ import React, { useState, useCallback, useContext, useEffect } from 'react';
 import { Card } from './Card';
 import update from 'immutability-helper';
 import CheckBoxList from './CheckBoxList';
+import Select from './Select';
+import TextInput from './TextInput';
 import OptionsContext from '../context/options/optionsContext';
 
 const DragAndDrop = () => {
@@ -12,6 +14,7 @@ const DragAndDrop = () => {
   const [modulesList, setModulesList] = useState([]);
   const [myCheckedList, setMyCheckedList] = useState([]);
   const [customModule, setCustomModule] = useState('');
+  const [selectedModulesDetails, setSelectedModulesDetails] = useState([]);
 
   const style = {
     width: 400,
@@ -104,6 +107,20 @@ const DragAndDrop = () => {
     setCustomModule(event.target.value);
   };
 
+  const handleModuleDetails = useCallback((inputName, value) => {
+    const detailInput = inputName.split('-');
+    const modNumber = detailInput[0];
+    const modPart = detailInput[1];
+
+    const detailObject = { [modPart]: value };
+    setSelectedModulesDetails((prevState) => {
+      return {
+        ...prevState,
+        ...{ [modNumber]: { ...prevState[modNumber], ...detailObject } },
+      };
+    });
+  }, []);
+
   return (
     <div>
       {modules && (
@@ -132,9 +149,29 @@ const DragAndDrop = () => {
       )}
       <hr />
       {modulesList && modulesList.length > 0 && (
-        <div style={style}>
-          {modulesList.map((module, i) => renderCard(module, i))}
-        </div>
+        <>
+          <div style={style}>
+            {modulesList.map((module, i) => renderCard(module, i))}
+          </div>
+          {modulesList.map((mod) => (
+            <div key={mod.id}>
+              <h5>{mod.name}</h5>
+              <TextInput
+                inputName={`${mod.id}-text`}
+                onInput={handleModuleDetails}
+              />
+              <Select
+                name={`${mod.id}-time`}
+                optionList={[
+                  { id: '10', title: '10' },
+                  { id: '15', title: '15' },
+                  { id: '20', title: '20' },
+                ]}
+                onSelect={handleModuleDetails}
+              />
+            </div>
+          ))}
+        </>
       )}
     </div>
   );
