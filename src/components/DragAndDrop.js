@@ -78,6 +78,12 @@ const DragAndDrop = () => {
         setModulesList((prevState) => [
           ...prevState.filter((item) => item.id !== removeItem),
         ]);
+
+        setSelectedModulesDetails((prevState) => {
+          const newData = { ...prevState };
+          delete newData[removeItem];
+          return newData;
+        });
       }
     } else {
       if (formValues.modules?.length === 0) {
