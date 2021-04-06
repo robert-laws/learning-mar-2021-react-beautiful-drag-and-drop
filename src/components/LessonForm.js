@@ -11,6 +11,7 @@ import LessonsContext from '../context/lessons/lessonsContext';
 import NumberPicker from './NumberPicker';
 import TextInputCollection from './TextInputCollection';
 import { setIntervals } from '../utils/formUtils';
+import { Form, DropdownButton, Dropdown } from 'react-bootstrap';
 
 const LessonForm = () => {
   const coursesContext = useContext(CoursesContext);
@@ -94,7 +95,13 @@ const LessonForm = () => {
       {isLoading ? (
         <div>Loading...</div>
       ) : (
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
+          <DropdownButton id='dropdown-basic-button' title='Select a Course'>
+            <Dropdown.Item href='#/action-1'>Action</Dropdown.Item>
+            <Dropdown.Item href='#/action-2'>Another action</Dropdown.Item>
+            <Dropdown.Item href='#/action-3'>Something else</Dropdown.Item>
+          </DropdownButton>
+
           <Select
             optionList={courses}
             onSelect={onSelect}
@@ -212,7 +219,7 @@ const LessonForm = () => {
 
           <hr />
           <button type='submit'>Submit</button>
-        </form>
+        </Form>
       )}
     </div>
   );

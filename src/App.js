@@ -1,18 +1,22 @@
 import './App.css';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
-import DragAndDrop from './components/DragAndDrop';
-// import LessonForm from './components/LessonForm';
+// import { DndProvider } from 'react-dnd';
+// import { HTML5Backend } from 'react-dnd-html5-backend';
+// import DragAndDrop from './components/DragAndDrop';
+import LessonForm from './components/LessonForm';
+import { Container, Row, Col } from 'react-bootstrap';
 
 function App() {
   return (
-    <div className='App'>
-      <h1>App</h1>
-      {/* <LessonForm /> */}
-      <DndProvider backend={HTML5Backend}>
-        <DragAndDrop />
-      </DndProvider>
-    </div>
+    <Container>
+      <Row>
+        <Col>
+          {/* <DndProvider backend={HTML5Backend}>
+            <DragAndDrop />
+          </DndProvider> */}
+          <LessonForm />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
